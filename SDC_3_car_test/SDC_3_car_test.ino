@@ -39,7 +39,7 @@ int sMid = sMin + sMax / 2; // calculate the midpoint.
  * One sixth of the range on both sides off the middle for driving straight
  * that makes 1/3 left, 1/3 straight, 1/3 right.
  */
-int center = sM / 6; 
+int center = sMid / 6; 
 
 void setup() {
   steer.setSpeed( 255 );
