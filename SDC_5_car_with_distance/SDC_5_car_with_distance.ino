@@ -19,15 +19,15 @@ int LINE_SENSOR = A0;
 // First run the SDC_TCRT500 sketch and set the min and max values for the sensor below.
 int sMin = 300; // set this to the minimal value you get from the line sensor
 int sMax = 1000; // set this to the maximal value you get from the line sensor
-int sM = sMin + sMax / 2; // calculate the midpoint.
+int sM = ( sMin + sMax ) / 2; // calculate the midpoint.
 
 void setup() {
   Serial.begin( 9600 ); // set up Serial library at 9600 bps for debugging
   Serial.println( "Motor test!" ); // start message.
 
   // turn on motor
-  steer.setSpeed( 255 ); 
-  steer.run( NEUTRAL ); 
+  steer.setSpeed( 255 );
+  steer.run( NEUTRAL );
 
   motor.setSpeed( 255 );
   motor.run( RELEASE );
@@ -43,9 +43,9 @@ void loop() {
 
     int sVal = analogRead( LINE_SENSOR );
     int error = sVal - sM;
-    
+
     Serial.println( error );
-    
+
     int t;
     if ( error < - 50 ) {
       steer.run(LEFT);
